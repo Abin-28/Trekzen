@@ -294,7 +294,7 @@ const addSelectedDestinationsToFirebase = async () => {
         }
 
         // Fetch selected destinations data from the server
-        const response = await fetch('ordered_places.json');
+        const response = await fetch('/Mainpage/components/quick_planner/ordered_places.json');
         if (!response.ok) {
             throw new Error('Failed to fetch selected destinations data');
         }
@@ -377,7 +377,7 @@ const adddaysToFirebase = async () => {
         }
 
         // Fetch selected destinations data from the server
-        const response = await fetch('ordered.json');
+        const response = await fetch('/Mainpage/components/vacation_planner/ordered.json');
         if (!response.ok) {
             throw new Error('Failed to fetch days data');
         }

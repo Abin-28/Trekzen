@@ -10,7 +10,7 @@
     <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="images/icons/icons-48.jpg" />
+    <link rel="shortcut icon" href="/images/icons/icons-48.jpg" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
     <!-- Leaflet CSS -->
@@ -24,7 +24,7 @@
 
     <title>Treksen</title>
 
-    <link href="Mainpage/css/app.css" rel="stylesheet">
+    <link href="/Mainpage/css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global styles */
@@ -102,13 +102,13 @@
                     </li>
 
                     <li class="sidebar-item ">
-                        <a class="sidebar-link" href="user_home.html">
+                        <a class="sidebar-link" href="/Mainpage/user_home.html">
                             <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Home</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="profile.html">
+                        <a class="sidebar-link" href="/Mainpage/profile.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                         </a>
                     </li>
@@ -119,25 +119,25 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="quickplan.html">
+                        <a class="sidebar-link" href="/Mainpage/components/quick_planner/quickplan.html">
                             <i class="align-middle"></i> <span class="align-middle">Quick Plan</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="vacation.html">
+                        <a class="sidebar-link" href="/Mainpage/components/vacation_planner/vacation.html">
                             <i class="align-middle"></i> <span class="align-middle">Vacation Planner</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="bussiness.html">
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="/Mainpage/components/add_bussiness/bussiness.html">
                             <i class="align-middle"></i> <span class="align-middle">Manage Business</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item active">
-                        <a class="sidebar-link" href="addplace_main.html">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/Mainpage/components/add_place/addplace_main.html">
                             <i class="align-middle"></i> <span class="align-middle">Add Place</span>
                         </a>
                     </li>
@@ -165,7 +165,7 @@
                                 <span class="text-dark" id="greet"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href="/Mainpage/profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" id="signoutbutton">Log out</a>
                             </div>
@@ -176,28 +176,28 @@
             <main class="content">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Add Places</h1>
+                        <h1 class="h3 d-inline align-middle">Business</h1>
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div>
                                 <div>
-                                    <button id="addPlaceBtn" class="btn btn-primary mt-3">Add Places</button>
+                                    <button id="addBusinessBtn" class="btn btn-primary mt-3">Add Business</button>
                                 </div>
-                                <div id="placeContainer" class="mt-3">
+                                <div id="businessContainer" class="mt-3">
                                     <!-- Inside #businessContainer -->
-                                    <div id="placeTableContainer">
-                                        <h2>Your Added Place</h2>
+                                    <div id="businessTableContainer">
+                                        <h2>Your Business</h2>
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th>Places</th>
+                                                    <th>Name</th>
                                                     <th>Type</th>
                                                     <th>Location</th>
                                                     <th>Approval</th>
                                                 </tr>
                                             </thead>
-                                            <tbody id="placeTableBody">
+                                            <tbody id="businessTableBody">
                                                 <!-- Business data will be populated here -->
                                             </tbody>
                                         </table>
@@ -207,14 +207,14 @@
                             </div>
                         </div>
 
-                        
+                       
                     </div>
                 </div>
             </main>
         </div>
     </div>
 
-    <script src="Mainpage/js/app.js"></script>
+    <script src="/Mainpage/js/app.js"></script>
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Leaflet MarkerCluster JS -->
@@ -224,7 +224,7 @@
     <!-- Leaflet Routing Machine JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
     <!-- Your existing JavaScript file -->
-    <script src="script.js"></script>
+    <script src="/Mainpage/js/script.js"></script>
 
 
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
@@ -234,9 +234,9 @@
     <script>
        
             // Add Business button click event
-            document.getElementById("addPlaceBtn").addEventListener("click", function() {
+            document.getElementById("addBusinessBtn").addEventListener("click", function() {
                 // Redirect to bussiness1.html
-                window.location.href = "addplace.html";
+                window.location.href = "/Mainpage/components/add_bussiness/bussiness1.html";
             });
 
     </script>
@@ -303,7 +303,7 @@
     </script> -->
 
 
-    <script type="module" src="user_login.js"></script>
+    <script type="module" src="/Mainpage/user_login.js"></script>
     
 	
 </body>

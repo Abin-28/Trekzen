@@ -58,15 +58,15 @@
 }
 
 #signupForm input[type="text"] {
-    background-image: url('images/login_page/user-profile-icon.png'); /* User icon */
+    background-image: url('/images/login_page/user-profile-icon.png'); /* User icon */
 }
 
 #signupForm input[type="email"] {
-    background-image: url('images/login_page/envelope-icon.png'); /* Mail icon */
+    background-image: url('/images/login_page/envelope-icon.png'); /* Mail icon */
 }
 
 #signupForm input[type="password"] {
-    background-image: url('images/login_page/lock-icon.png'); /* Lock icon */
+    background-image: url('/images/login_page/lock-icon.png'); /* Lock icon */
 }
 
 /* Sign Up button */

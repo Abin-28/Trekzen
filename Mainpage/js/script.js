@@ -24,7 +24,7 @@ var destinationSelect = document.getElementById('destination');
 
 // Load GeoJSON data for Kerala
 var xhr = new XMLHttpRequest();
-xhr.open('GET', 'Kerala.geojson', true);
+xhr.open('GET', '/Mainpage/Kerala.geojson', true);
 xhr.onreadystatechange = function() {
     if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -66,7 +66,7 @@ var allMarkers = [];
 
 // Load CSV data for village markers
 var csvRequest = new XMLHttpRequest();
-csvRequest.open('GET', 'cities.csv', true);
+csvRequest.open('GET', '/Mainpage/cities.csv', true);
 csvRequest.onreadystatechange = function() {
     if (csvRequest.readyState === 4) {
         if (csvRequest.status === 200) {
@@ -82,35 +82,35 @@ csvRequest.onreadystatechange = function() {
                 var markerIcon;
                 if (category === "place") {
                     markerIcon = L.icon({
-                        iconUrl: 'images/map/marker-icon.png',
+                        iconUrl: '/images/map/marker-icon.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "tourist") {
                     markerIcon = L.icon({
-                        iconUrl: 'images/map/tourist.png',
+                        iconUrl: '/images/map/tourist.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "facilities") {
                     markerIcon = L.icon({
-                        iconUrl: 'images/map/facilities.png',
+                        iconUrl: '/images/map/facilities.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "hotels") {
                     markerIcon = L.icon({
-                        iconUrl: 'images/map/Hotel.png',
+                        iconUrl: '/images/map/Hotel.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else {
                     markerIcon = L.icon({
-                        iconUrl: 'images/map/marker-icon.png',
+                        iconUrl: '/images/map/marker-icon.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
@@ -181,7 +181,7 @@ function updateDestinationOptions(district, category, selectedDestination) {
 
     // Load CSV data for village markers
     var csvRequest = new XMLHttpRequest();
-    csvRequest.open('GET', 'cities.csv', true);
+    csvRequest.open('GET', '/Mainpage/cities.csv', true);
     csvRequest.onreadystatechange = function() {
         if (csvRequest.readyState === 4) {
             if (csvRequest.status === 200) {
@@ -315,7 +315,7 @@ function updateStartingLocationOptions() {
     
     // Load CSV data for village markers
     var csvRequest = new XMLHttpRequest();
-    csvRequest.open('GET', 'cities.csv', true);
+    csvRequest.open('GET', '/Mainpage/cities.csv', true);
     csvRequest.onreadystatechange = function() {
         if (csvRequest.readyState === 4) {
             if (csvRequest.status === 200) {
@@ -373,7 +373,7 @@ document.getElementById('location').addEventListener('change', function(event) {
     
                 // Add a marker to show the user's location
                 var userMarkerIcon = L.icon({
-                    iconUrl: 'images/map/Marker.png', // Path to your marker image
+                    iconUrl: '/images/map/Marker.png', // Path to your marker image
                     iconSize: [80, 80], // Size of the icon
                     iconAnchor: [16, 32], // Anchor point of the icon (center bottom)
                     popupAnchor: [0, -32] // Popup anchor relative to the icon
@@ -393,7 +393,7 @@ document.getElementById('location').addEventListener('change', function(event) {
     if (selectedOption !== 'My Location') { // Check if the selected option is not "My Location"
         // Load CSV data for village markers
         var csvRequest = new XMLHttpRequest();
-        csvRequest.open('GET', 'cities.csv', true);
+        csvRequest.open('GET', '/Mainpage/cities.csv', true);
         csvRequest.onreadystatechange = function() {
             if (csvRequest.readyState === 4) {
                 if (csvRequest.status === 200) {

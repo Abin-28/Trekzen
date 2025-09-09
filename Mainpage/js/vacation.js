@@ -296,11 +296,11 @@ document.addEventListener("DOMContentLoaded", function () {
         document.head.appendChild(style);
 
         function displayPathForDay(day) {
-            // Wait for a while to ensure the server has created the ordered_places.json file
+            // Wait for a while to ensure the server has created the ordered.json file
             setTimeout(() => {
                 // Then fetch ordered places data
                 var jsonRequest = new XMLHttpRequest();
-                jsonRequest.open('GET', 'ordered.json', true);
+                jsonRequest.open('GET', '/Mainpage/components/vacation_planner/ordered.json', true);
                 jsonRequest.onreadystatechange = function () {
                     if (jsonRequest.readyState === 4) {
                         if (jsonRequest.status === 200) {
@@ -327,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                                         // Load GeoJSON data for Kerala
                                         var xhr = new XMLHttpRequest();
-                                        xhr.open('GET', 'Kerala.geojson', true);
+                                        xhr.open('GET', '/Mainpage/Kerala.geojson', true);
                                         xhr.onreadystatechange = function () {
                                             if (xhr.readyState === 4) {
                                                 if (xhr.status === 200) {

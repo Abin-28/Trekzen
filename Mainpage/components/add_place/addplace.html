@@ -10,7 +10,7 @@
     <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="images/icons/icons-48.jpg" />
+    <link rel="shortcut icon" href="/images/icons/icons-48.jpg" />
 
     <link rel="canonical" href="https://demo-basic.adminkit.io/" />
     <!-- Leaflet CSS -->
@@ -23,7 +23,7 @@
 
     <title>Treksen</title>
 
-    <link href="Mainpage/css/app.css" rel="stylesheet">
+    <link href="/Mainpage/css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         #map {
@@ -37,7 +37,7 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="user_home.html">
+                <a class="sidebar-brand" href="/Mainpage/user_home.html">
                     <span class="align-self-center">Trekzen</span>
                 </a>
 
@@ -48,13 +48,13 @@
                     </li>
 
                     <li class="sidebar-item ">
-                        <a class="sidebar-link" href="user_home.html">
+                        <a class="sidebar-link" href="/Mainpage/user_home.html">
                             <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Home</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="profile.html">
+                        <a class="sidebar-link" href="/Mainpage/profile.html">
                             <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
                         </a>
                     </li>
@@ -65,32 +65,35 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="quickplan.html">
+                        <a class="sidebar-link" href="/Mainpage/components/quick_planner/quickplan.html">
                             <i class="align-middle"></i> <span class="align-middle">Quick Plan</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="vacation.html">
+                        <a class="sidebar-link" href="/Mainpage/components/vacation_planner/vacation.html">
                             <i class="align-middle"></i> <span class="align-middle">Vacation Planner</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item active">
-                        <a class="sidebar-link" href="bussiness.html">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/Mainpage/components/add_bussiness/bussiness.html">
                             <i class="align-middle"></i> <span class="align-middle">Manage Business</span>
                         </a>
                     </li>
 
+                  
+
+                    
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="bussiness1.html">
-                            <i class="align-middle"></i> <span class="align-middle">Add Business</span>
+                        <a class="sidebar-link" href="/Mainpage/components/add_place/addplace_main.html">
+                            <i class="align-middle"></i> <span class="align-middle">Add Place</span>
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="addplace_main.html">
-                            <i class="align-middle"></i> <span class="align-middle">Add Place</span>
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="/Mainpage/components/add_place/addplace.html">
+                            <i class="align-middle"></i> <span class="align-middle">Add A Place</span>
                         </a>
                     </li>
 
@@ -116,7 +119,7 @@
                                 <span class="text-dark" id="greet"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                                <a class="dropdown-item" href="/Mainpage/profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" id="signoutbutton">Log out</a>
                             </div>
@@ -127,29 +130,28 @@
             <main class="content">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Business</h1>
+                        <h1 class="h3 d-inline align-middle">Add A Place</h1>
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Business Name</h5>
+                                    <h5 class="card-title mb-0">Place</h5>
                                 </div>
                                 <div class="card-body">
-                                    <input type="text" id="businessName" class="form-control" placeholder="Add Business Name">
+                                    <input type="text" id="placeName" class="form-control" placeholder="Add Name of Place">
                                 </div>
                             </div>
 
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Business Type</h5>
+                                    <h5 class="card-title mb-0">Place Type</h5>
                                 </div>
                                 <div class="card-body">
-                                    <select id="businessType" class="form-select mb-3">
-                                        <option value="" disabled selected>Choose Business Type</option>
-                                        <option>Restaurant</option>
-                                        <option>Shop</option>
-                                        <option>Lodging</option>
+                                    <select id="placeType" class="form-select mb-3">
+                                        <option value="" disabled selected>Choose Place Type</option>
+                                        <option>Place</option>
+                                        <option>Tourist</option>
                                     </select>
                                 </div>
                                 
@@ -157,14 +159,14 @@
     
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Location(Cord x,Cord y)</h5>
+                                    <h5 class="card-title mb-0">Location</h5>
                                 </div>
                                 <div class="card-body">
                                     <input type="text" id="location" class="form-control" placeholder="Add Location (Latitude, Longitude)">
                                 </div>
                             </div>
     
-                            <button id="addBusinessBtn" class="btn btn-primary mt-3">Add Business</button>
+                            <button id="addPlaceBtn" class="btn btn-primary mt-3">Add Place</button>
                             <div id="messageContainer"></div>
                         </div>
     
@@ -175,7 +177,7 @@
         </div>
     </div>
     
-    <script src="Mainpage/js/app.js"></script>
+    <script src="/Mainpage/js/app.js"></script>
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <!-- Leaflet MarkerCluster JS -->
@@ -185,29 +187,29 @@
     <!-- Leaflet Routing Machine JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
     <!-- Your existing JavaScript file -->
-    <script src="script.js"></script>
-    <script type="module" src="user_login.js"></script>
+    <script src="/Mainpage/js/script.js"></script>
+    <script type="module" src="/Mainpage/js/user_login.js"></script>
 
     <script>
-        // Updated addBusinessBtn function
-        document.getElementById("addBusinessBtn").addEventListener("click", function() {
-            var businessName = document.getElementById("businessName").value.trim();
-            var businessType = document.getElementById("businessType").value.trim();
+        // Updated addPlaceBtn function
+        document.getElementById("addPlaceBtn").addEventListener("click", function() {
+            var placeName = document.getElementById("placeName").value.trim();
+            var placeType = document.getElementById("placeType").value.trim();
             var location = document.getElementById("location").value.trim();
 
-    if (businessName === '' || businessType === '' || location === '') {
+    if (placeName === '' || placeType === '' || location === '') {
         alert('Please fill out all fields.');
         return;
     }
  // Explicitly import the addBusiness function from the imported module
  import('./user_login.js')
  .then(module => {
-     const { addBusiness } = module;
-     addBusiness(businessName, businessType, location);
+     const { addPlace } = module;
+     addPlace(placeName, placeType, location);
  })
  .catch(error => {
-     console.error('Error importing addBusiness:', error);
-     alert('Error adding business. Please try again later.');
+     console.error('Error importing addPlace:', error);
+     alert('Error adding place. Please try again later.');
  });
 });
     </script>

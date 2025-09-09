@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM content loaded...");
   var tripForm = document.getElementById('tripForm');
@@ -8,47 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var container = document.getElementById('selectedDestinationsContainer');
     var showTourButton = document.getElementById('showTourButton');
     var startNewTourBtn = document.getElementById('startNewTour'); // Added start new tour button
+     
     var startingLocationSelect = document.getElementById('location');
-    var presetPlaces = ['Vagamon Meadows', 'Vagamon Pine Forest','Vagamon Tea Lake Boating']; // Define your preset places here
     
-    // Function to populate preset places
-    function populatePresetPlaces() {
-       
-
-        presetPlaces.forEach(function (place) {
-            var destinationElement = document.createElement('div');
-            destinationElement.textContent = place;
-            destinationElement.classList.add('selectedDestination'); // Apply a class for styling
-
-            // Add delete button for destination
-            var deleteDestinationButton = document.createElement('button');
-            deleteDestinationButton.textContent = 'Delete';
-            deleteDestinationButton.classList.add('btn', 'btn-danger', 'btn-sm', 'ms-2', 'delete-button');
-            deleteDestinationButton.addEventListener('click', function () {
-                // Check if the clicked place is a preset place
-                if (presetPlaces.includes(place)) {
-                    // Remove the preset place from the array
-                    presetPlaces = presetPlaces.filter(p => p !== place);
-                } else {
-                    // Remove the selected destination from the array
-                    selectedDestinations = selectedDestinations.filter(dest => dest !== place);
-                }
-                // Update the selected destinations
-                updateSelectedDestinations();
-            });
-            destinationElement.appendChild(deleteDestinationButton);
-
-            container.appendChild(destinationElement);
-        });
-
-        container.classList.remove('d-none');
-        showTourButton.classList.remove('d-none');
-    }
-
-
-
-    // Call the populatePresetPlaces function to populate preset places when the page loads
-    populatePresetPlaces();        
 
     tripForm.addEventListener('submit', function (e) {
         e.preventDefault(); // Prevent form submission
@@ -56,16 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById('addToRouteButton').addEventListener('click', function () {
-        
-
         var selectedDestination = destinationSelect.value;
         var startingLocation = startingLocationSelect.value; 
         if (selectedDestination) {
-            if (!selectedDestinations.includes(selectedDestination) && !presetPlaces.includes(selectedDestination)) {
+            if (!selectedDestinations.includes(selectedDestination)) {
                 if (selectedDestination !== startingLocation) { // Check if selected destination is not the same as starting location
                     selectedDestinations.push(selectedDestination);
                     updateSelectedDestinations();
-                    
+                    showTourButton.classList.remove('d-none');
                 } else {
                     alert('Starting location and destination cannot be the same.');
                 }
@@ -80,15 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
     startingLocationSelect.addEventListener('change', function () {
         startingLocation = this.value;
         updateSelectedDestinations();
-
     });
 
     function updateSelectedDestinations() {
         container.innerHTML = '';
 
-
         if (startingLocation) {
-            if (!selectedDestinations.includes(startingLocation) && !presetPlaces.includes(startingLocation)) { // Check if the selected starting location is not a preset place
+            if (!selectedDestinations.includes(startingLocation)) { // Check if the selected starting location is not a preset place
                 var startingLocationElement = document.createElement('div');
                 startingLocationElement.textContent = 'Starting Location: '+' '+' ' + startingLocation;
                 startingLocationElement.style.fontWeight = 'bold'; 
@@ -114,9 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         }
-
-        // Call the populatePresetPlaces function to populate preset places when the page loads
-        populatePresetPlaces();
 
         selectedDestinations.forEach(function (destination) {
             var destinationElement = document.createElement('div');
@@ -226,11 +183,10 @@ if (style.styleSheet) {
 document.head.appendChild(style);
 
 showTourButton.addEventListener('click', async function () {
-    if (startingLocation) {
+    if (selectedDestinations.length > 0 && startingLocation) {
         // Send selected destinations and starting location to the server to save to a JSON file
         var destinationsToSend = [];
         destinationsToSend.push(startingLocation);
-        destinationsToSend.push(...presetPlaces);        
         destinationsToSend.push(...selectedDestinations);
 
         var xhr = new XMLHttpRequest();
@@ -249,7 +205,7 @@ showTourButton.addEventListener('click', async function () {
                         map.removeLayer(markerCluster);
                         // Then fetch ordered places data
                         var jsonRequest = new XMLHttpRequest();
-                        jsonRequest.open('GET', 'ordered_places.json', true);
+                        jsonRequest.open('GET', '/Mainpage/components/quick_planner/ordered_places.json', true);
                         jsonRequest.onreadystatechange = function () {
                             if (jsonRequest.readyState === 4) {
                                 if (jsonRequest.status === 200) {
@@ -275,7 +231,7 @@ showTourButton.addEventListener('click', async function () {
 
                                                 // Load GeoJSON data for Kerala
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open('GET', 'Kerala.geojson', true);
+                                                xhr.open('GET', '/Mainpage/Kerala.geojson', true);
                                                 xhr.onreadystatechange = function() {
                                                     if (xhr.readyState === 4) {
                                                         if (xhr.status === 200) {
@@ -428,7 +384,7 @@ showTourButton.addEventListener('click', async function () {
       
         xhr.send(JSON.stringify({ destinations: destinationsToSend }));
     } else {
-        alert('Please select starting location.');
+        alert('Please select starting location and destinations.');
     }
 });
 

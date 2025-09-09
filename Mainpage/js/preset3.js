@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var showTourButton = document.getElementById('showTourButton');
     var startNewTourBtn = document.getElementById('startNewTour'); // Added start new tour button
     var startingLocationSelect = document.getElementById('location');
-    var presetPlaces = ['GunaCave','Pillar Rocks Viewpoint','Silver cascade falls','Upper Lake View','Pine Forest']; // Define your preset places here
+    var presetPlaces = ['Vagamon Meadows', 'Vagamon Pine Forest','Vagamon Tea Lake Boating']; // Define your preset places here
     
     // Function to populate preset places
     function populatePresetPlaces() {
@@ -249,7 +249,7 @@ showTourButton.addEventListener('click', async function () {
                         map.removeLayer(markerCluster);
                         // Then fetch ordered places data
                         var jsonRequest = new XMLHttpRequest();
-                        jsonRequest.open('GET', 'ordered_places.json', true);
+                        jsonRequest.open('GET', '/Mainpage/components/quick_planner/ordered_places.json', true);
                         jsonRequest.onreadystatechange = function () {
                             if (jsonRequest.readyState === 4) {
                                 if (jsonRequest.status === 200) {
@@ -275,7 +275,7 @@ showTourButton.addEventListener('click', async function () {
 
                                                 // Load GeoJSON data for Kerala
                                                 var xhr = new XMLHttpRequest();
-                                                xhr.open('GET', 'Kerala.geojson', true);
+                                                xhr.open('GET', '/Mainpage/Kerala.geojson', true);
                                                 xhr.onreadystatechange = function() {
                                                     if (xhr.readyState === 4) {
                                                         if (xhr.status === 200) {
