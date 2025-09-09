@@ -49,11 +49,11 @@
 }
 
 #loginForm input[type="email"] {
-    background-image: url('../Lassets/envelope-icon.png'); /* Mail icon */
+    background-image: url('images/login_page/envelope-icon.png'); /* Mail icon */
 }
 
 #loginForm input[type="password"] {
-    background-image: url('../Lassets/lock-icon.png'); /* Lock icon */
+    background-image: url('images/login_page/lock-icon.png'); /* Lock icon */
 }
 
 /* Login button */

@@ -82,35 +82,35 @@ csvRequest.onreadystatechange = function() {
                 var markerIcon;
                 if (category === "place") {
                     markerIcon = L.icon({
-                        iconUrl: 'assets/marker-icon.png',
+                        iconUrl: 'images/map/marker-icon.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "tourist") {
                     markerIcon = L.icon({
-                        iconUrl: 'assets/tourist.png',
+                        iconUrl: 'images/map/tourist.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "facilities") {
                     markerIcon = L.icon({
-                        iconUrl: 'assets/facilities.png',
+                        iconUrl: 'images/map/facilities.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else if (category === "hotels") {
                     markerIcon = L.icon({
-                        iconUrl: 'assets/hotel.png',
+                        iconUrl: 'images/map/Hotel.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
                     });
                 } else {
                     markerIcon = L.icon({
-                        iconUrl: 'assets/marker-icon.png',
+                        iconUrl: 'images/map/marker-icon.png',
                         iconSize: [25, 41],
                         iconAnchor: [12, 41],
                         popupAnchor: [1, -34]
@@ -373,7 +373,7 @@ document.getElementById('location').addEventListener('change', function(event) {
     
                 // Add a marker to show the user's location
                 var userMarkerIcon = L.icon({
-                    iconUrl: 'assets/Marker.png', // Path to your marker image
+                    iconUrl: 'images/map/Marker.png', // Path to your marker image
                     iconSize: [80, 80], // Size of the icon
                     iconAnchor: [16, 32], // Anchor point of the icon (center bottom)
                     popupAnchor: [0, -32] // Popup anchor relative to the icon
