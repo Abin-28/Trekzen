@@ -128,7 +128,7 @@ function executeAlgorithm(matrixData) {
     };
     
     const resultJSON = JSON.stringify(result, null, 2);
-    fs.writeFile('/Mainpage/components/quick_planner/result.json', resultJSON, (err) => {
+    fs.writeFile('./Mainpage/components/quick_planner/result.json', resultJSON, (err) => {
         if (err) {
             console.error('Error writing result to file:', err);
             return;
@@ -150,13 +150,13 @@ function executeAlgorithm(matrixData) {
 function createOrderedPlacesFile() {
     try {
         // Read selected_destinations.json
-        const destinationData = JSON.parse(fs.readFileSync('/Mainpage/components/quick_planner/selected_destinations.json', 'utf8'));
+        const destinationData = JSON.parse(fs.readFileSync('./Mainpage/components/quick_planner/selected_destinations.json', 'utf8'));
         if (!destinationData || !Array.isArray(destinationData)) {
             throw new Error('Invalid or empty destination data');
         }
 
         // Read result.json
-        const resultData = JSON.parse(fs.readFileSync('/Mainpage/components/quick_planner/result.json', 'utf8'));
+        const resultData = JSON.parse(fs.readFileSync('./Mainpage/components/quick_planner/result.json', 'utf8'));
         if (!resultData || typeof resultData !== 'object') {
             throw new Error('Invalid or empty result data');
         }
@@ -177,7 +177,7 @@ function createOrderedPlacesFile() {
             orderedPlaces,
             totalDistance
         };
-        fs.writeFileSync('/Mainpage/components/quick_planner/ordered_places.json', JSON.stringify(orderedResult, null, 2));
+        fs.writeFileSync('./Mainpage/components/quick_planner/ordered_places.json', JSON.stringify(orderedResult, null, 2));
         console.log('Ordered places and total distance saved to ordered_places.json');
     } catch (error) {
         console.error('Error creating ordered places file:', error);

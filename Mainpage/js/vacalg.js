@@ -126,7 +126,7 @@ console.log("Time taken:", (Date.now() - starttime) / 1000, "seconds");
 
 
     const resultJSON = JSON.stringify(vresult, null, 2);
-    fs.writeFile('/Mainpage/components/vacation_planner/vacresult.json', resultJSON, (err) => {
+    fs.writeFile('./Mainpage/components/vacation_planner/vacresult.json', resultJSON, (err) => {
         if (err) {
             console.error('Error writing result to file:', err);
             return;
@@ -145,13 +145,13 @@ console.log("Time taken:", (Date.now() - starttime) / 1000, "seconds");
 function createOrderedPlacesFile() {
     try {
         // Read days.json
-        const daysData = JSON.parse(fs.readFileSync('/Mainpage/components/vacation_planner/days.json', 'utf8'));
+        const daysData = JSON.parse(fs.readFileSync('./Mainpage/components/vacation_planner/days.json', 'utf8'));
         if (!daysData || !Array.isArray(daysData)) {
             throw new Error('Invalid or empty days data');
         }
 
         // Read vacresult.json
-        const resultData = JSON.parse(fs.readFileSync('/Mainpage/components/vacation_planner/vacresult.json', 'utf8'));
+        const resultData = JSON.parse(fs.readFileSync('./Mainpage/components/vacation_planner/vacresult.json', 'utf8'));
         if (!resultData || !Array.isArray(resultData)) {
             throw new Error('Invalid or empty result data');
         }
@@ -181,7 +181,7 @@ function createOrderedPlacesFile() {
             totalDistance: resultData.reduce((acc, curr) => acc + curr.shortestDistance, 0)
         };
 
-        fs.writeFileSync('/Mainpage/components/vacation_planner/ordered.json', JSON.stringify(orderedResult, null, 2));
+        fs.writeFileSync('./Mainpage/components/vacation_planner/ordered.json', JSON.stringify(orderedResult, null, 2));
         console.log('Ordered places and total distance saved to ordered.json');
     } catch (error) {
         console.error('Error creating ordered places file:', error);

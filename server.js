@@ -13,13 +13,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const rootDir = path.join(__dirname);
-const citiesCsvFilePath = path.join(rootDir, '/Mainpage/cities.csv');
-const selectedDestinationsFilePath = path.join(rootDir, '/Mainpage/components/quick_planner/selected_destinations.json');
-const distanceFilePath = path.join(rootDir, '/Mainpage/components/quick_planner/distance.json');
-const matrixFilePath = path.join(rootDir, '/Mainpage/components/quick_planner/matrix.json');
-const daysFilePath = path.join(rootDir, '/Mainpage/components/vacation_planner/days.json');
-const distanceDaysFilePath = path.join(rootDir, '/Mainpage/components/vacation_planner/distance_days.json');
-const daysMatrixFilePath = path.join(rootDir, '/Mainpage/components/vacation_planner/days_matrix.json');
+const citiesCsvFilePath = path.join(rootDir, './Mainpage/cities.csv');
+const selectedDestinationsFilePath = path.join(rootDir, './Mainpage/components/quick_planner/selected_destinations.json');
+const distanceFilePath = path.join(rootDir, './Mainpage/components/quick_planner/distance.json');
+const matrixFilePath = path.join(rootDir, './Mainpage/components/quick_planner/matrix.json');
+const daysFilePath = path.join(rootDir, './Mainpage/components/vacation_planner/days.json');
+const distanceDaysFilePath = path.join(rootDir, './Mainpage/components/vacation_planner/distance_days.json');
+const daysMatrixFilePath = path.join(rootDir, './Mainpage/components/vacation_planner/days_matrix.json');
 
 app.use(express.static(rootDir));
 app.use(express.json());
@@ -230,9 +230,9 @@ app.post('/saveDestinations', (req, res) => {
 app.put('/emptySelectedDestinationsFile', async (req, res) => {
     try {
         // Empty the selected_destinations.json file
-        fs.writeFileSync('selected_destinations.json', '[]', 'utf8');
-        fs.writeFileSync('/Mainpage/components/quick_planner/distance.json', '[]', 'utf8');
-        fs.writeFileSync('/Mainpage/components/quick_planner/matrix.json', '[]', 'utf8');
+        fs.writeFileSync(selectedDestinationsFilePath, '[]', 'utf8');
+        fs.writeFileSync(distanceFilePath, '[]', 'utf8');
+        fs.writeFileSync(matrixFilePath, '[]', 'utf8');
         } catch (error) {
         console.error('Error emptying selected destinations file:', error);
         res.status(500).send('Error emptying selected destinations file');
@@ -492,9 +492,9 @@ app.post('/saveDestinationsByDay', (req, res) => {
 app.put('/emptydaysFile', async (req, res) => {
     try {
         // Empty the selected_destinations.json file
-        fs.writeFileSync('/Mainpage/components/vacation_planner/days.json', '[]', 'utf8');
-        fs.writeFileSync('/Mainpage/components/vacation_planner/distance_days.json', '[]', 'utf8');
-        fs.writeFileSync('/Mainpage/components/vacation_planner/days_matrix.json', '[]', 'utf8');
+        fs.writeFileSync(daysFilePath, '[]', 'utf8');
+        fs.writeFileSync(distanceDaysFilePath, '[]', 'utf8');
+        fs.writeFileSync(daysMatrixFilePath, '[]', 'utf8');
        
       
         } catch (error) {
@@ -509,7 +509,7 @@ app.post('/emptyOrderedJson', (req, res) => {
     let data = {};
     
     // Write the modified JSON back to the file
-    fs.writeFile('/Mainpage/components/vacation_planner/ordered.json', JSON.stringify(data), 'utf8', (err) => {
+    fs.writeFile('./Mainpage/components/vacation_planner/ordered.json', JSON.stringify(data), 'utf8', (err) => {
         if (err) {
             console.error('Error emptying ordered.json file:', err);
             res.status(500).send('Internal Server Error');
@@ -529,7 +529,7 @@ const { executeAlgorithm } = require('./Mainpage/js/linalg.js');
 // Add a new endpoint to handle the algorithm execution request triggered by the "Show Tour" button click
 app.post('/executeAlgorithm', (req, res) => {
     // Read the matrix.json file and execute the algorithm
-    fs.readFile('./matrix.json', (err, data) => {
+    fs.readFile(matrixFilePath, (err, data) => {
         if (err) {
             console.error('Error reading matrix file:', err);
             res.status(500).send('Internal server error');
@@ -555,7 +555,7 @@ const { executeVacationAlgorithm } = require('./Mainpage/js/vacalg.js');
 // Add a new endpoint to handle the algorithm execution request triggered by the "Show Tour" button click
 app.post('/executeVacationAlgorithm', (req, res) => {
     // Read the matrix.json file and execute the algorithm
-    fs.readFile('./Mainpage/components/vacation_planner/days_matrix.json', (err, data) => {
+    fs.readFile(daysMatrixFilePath, (err, data) => {
         if (err) {
             console.error('Error reading matrix file:', err);
             res.status(500).send('Internal server error');
