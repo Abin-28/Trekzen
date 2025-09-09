@@ -40,5 +40,5 @@ ordered.json
 *.tmp
 *.bak
 
-# # Source maps (optional)
-# *.map
+# Source maps
+*.map
