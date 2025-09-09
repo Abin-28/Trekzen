@@ -520,7 +520,7 @@ app.post('/emptyOrderedJson', (req, res) => {
     });
 });
 
-const { executeAlgorithm } = require('./Mainpage/js/linalg.js');
+const { executeAlgorithm } = require('./Mainpage/js/quickplan_algorithm.js');
 
 
 
@@ -550,7 +550,7 @@ app.post('/executeAlgorithm', (req, res) => {
     });
 });
 
-const { executeVacationAlgorithm } = require('./Mainpage/js/vacalg.js');
+const { executeVacationAlgorithm } = require('./Mainpage/js/vacationplan_algorithm.js');
 
 // Add a new endpoint to handle the algorithm execution request triggered by the "Show Tour" button click
 app.post('/executeVacationAlgorithm', (req, res) => {
