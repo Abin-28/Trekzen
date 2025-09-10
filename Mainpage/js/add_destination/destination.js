@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                import('/Mainpage/js/user_login.js')
+                import('/Mainpage/js/user_data.js')
                     .then(module => {
                         var addBusiness = module.addBusiness;
                         addBusiness(businessName, businessType, location);
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     return;
                 }
 
-                import('/Mainpage/js/user_login.js')
+                import('/Mainpage/js/user_data.js')
                     .then(module => {
                         var addPlace = module.addPlace;
                         addPlace(placeName, placeType, location);

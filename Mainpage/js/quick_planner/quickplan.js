@@ -405,8 +405,8 @@ showTourButton.addEventListener('click', async function () {
     // Call the function to update starting location options
     updateStartingLocationOptions();
     
-    // Import user_login.js only after the DOM content is loaded and necessary elements are available
-    import('./user_login.js')
+    // Import user_data.js only after the DOM content is loaded and necessary elements are available
+    import('/Mainpage/js/user_data.js')
         .then(({ startNewTour }) => {
             // Assuming startNewTourBtn is the button element to start a new tour
             startNewTourBtn.addEventListener('click', async function () {
@@ -424,7 +424,7 @@ showTourButton.addEventListener('click', async function () {
             });
         })
         .catch(error => {
-            console.error('Error importing user_login.js:', error);
+            console.error('Error importing user_data.js:', error);
         });
 
        
