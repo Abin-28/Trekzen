@@ -9,7 +9,19 @@ document.addEventListener("DOMContentLoaded", function () {
     var showTourButton = document.getElementById('showTourButton');
     var startNewTourBtn = document.getElementById('startNewTour'); // Added start new tour button
     var startingLocationSelect = document.getElementById('location');
-    var presetPlaces = ['Vagamon Meadows', 'Vagamon Pine Forest','Vagamon Tea Lake Boating']; // Define your preset places here
+    var presetPlaces = (function(){
+        try {
+            var cfgEl = document.getElementById('preset-config');
+            if (cfgEl && cfgEl.textContent) {
+                var cfg = JSON.parse(cfgEl.textContent);
+                if (cfg && Array.isArray(cfg.presetPlaces)) {
+                    return cfg.presetPlaces;
+                }
+            }
+        } catch (e) {
+            console.error('Failed to read preset-config. Using defaults.', e);
+        }
+    })(); // Define your preset places here
     
     // Function to populate preset places
     function populatePresetPlaces() {
