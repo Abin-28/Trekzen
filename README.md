@@ -1,4 +1,4 @@
-# Trekzen - Intelligent Travel Planning Platform
+# Trekzen - Smart Travel Planning Platform
 
 ## Overview
 
