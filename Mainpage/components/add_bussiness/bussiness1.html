@@ -24,13 +24,9 @@
     <title>Treksen</title>
 
     <link href="/Mainpage/css/app.css" rel="stylesheet">
+    <link href="/Mainpage/css/add_destination.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-        }
-    </style>
+
 </head>
 
 <body>
@@ -77,7 +73,7 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="/Mainpage/add_bussiness/bussiness.html">
+                        <a class="sidebar-link" href="/Mainpage/components/add_bussiness/bussiness.html">
                             <i class="align-middle"></i> <span class="align-middle">Manage Business</span>
                         </a>
                     </li>
@@ -186,31 +182,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
     <!-- Your existing JavaScript file -->
     <script src="/Mainpage/js/script.js"></script>
+    <script src="/Mainpage/js/add_destination.js"></script>
     <script type="module" src="/Mainpage/js/user_login.js"></script>
-
-    <script>
-        // Updated addBusinessBtn function
-        document.getElementById("addBusinessBtn").addEventListener("click", function() {
-            var businessName = document.getElementById("businessName").value.trim();
-            var businessType = document.getElementById("businessType").value.trim();
-            var location = document.getElementById("location").value.trim();
-
-    if (businessName === '' || businessType === '' || location === '') {
-        alert('Please fill out all fields.');
-        return;
-    }
- // Explicitly import the addBusiness function from the imported module
- import('./user_login.js')
- .then(module => {
-     const { addBusiness } = module;
-     addBusiness(businessName, businessType, location);
- })
- .catch(error => {
-     console.error('Error importing addBusiness:', error);
-     alert('Error adding business. Please try again later.');
- });
-});
-    </script>
 
     </body>
     
