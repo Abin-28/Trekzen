@@ -170,6 +170,21 @@ Trekzen (New)/
 - Pre-filled destinations and flows that users can adopt or tweak.
 - Works with the same optimization and mapping stack used by planners.
 
+Deployment (Render)
+--------------------
+
+1) Create a new Web Service
+   - Build Command: (leave empty for Node)
+   - Start Command: `node server.js`
+   - Environment: `NODE_VERSION` (optional)
+
+2) Environment variables
+   - `PORT` is provided by Render automatically.
+
+3) Notes
+   - The server serves static files and API under the same origin; client scripts call APIs with relative paths.
+   - For local dev, run `npm start` and open `http://localhost:3000`.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -203,6 +218,7 @@ Trekzen (New)/
 
 5. **Access the application**
    - Local development: `http://localhost:3000`
+   - Production (Render): Use your Render service URL. All API calls use relative paths, so no code changes are needed when deploying.
    - Network access: `http://[YOUR_IP]:3000`
    - Production: `https://trekzen11.glitch.me`
 

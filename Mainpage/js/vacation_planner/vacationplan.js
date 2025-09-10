@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Function to execute the algorithm when the button is clicked
         async function executeVacationAlgorithm() {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'http://localhost:3000/executeVacationAlgorithm', true);
+            xhr.open('POST', '/executeVacationAlgorithm', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 destinationsToSend.push(...selectedDestinations);
 
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://localhost:3000/saveDestinationsByDay', true);
+                xhr.open('POST', '/saveDestinationsByDay', true);
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {

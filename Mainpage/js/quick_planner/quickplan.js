@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Modify the executeAlgorithm function to send a request to the server
 async function executeAlgorithm() {
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3000/executeAlgorithm', true);
+    xhr.open('POST', '/executeAlgorithm', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
@@ -190,7 +190,7 @@ showTourButton.addEventListener('click', async function () {
         destinationsToSend.push(...selectedDestinations);
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:3000/saveDestinations', true);
+        xhr.open('POST', '/saveDestinations', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {

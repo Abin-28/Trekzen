@@ -343,7 +343,7 @@ const addSelectedDestinationsToFirebase = async () => {
             console.log('Selected destinations data stored in Firebase successfully');
 
             // Empty the selected_destinations.json file
-            fetch('http://localhost:3000/emptySelectedDestinationsFile', {
+            fetch('/emptySelectedDestinationsFile', {
                 method: 'PUT'
             })
             .then(response => {
@@ -429,7 +429,7 @@ const adddaysToFirebase = async () => {
             console.log('Days data stored in Firebase successfully');
 
             // Empty the selected_destinations.json file
-            fetch('http://localhost:3000/emptydaysFile', {
+            fetch('/emptydaysFile', {
                 method: 'PUT'
             })
             .then(response => {
