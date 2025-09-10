@@ -1,0 +1,79 @@
+#map {
+    height: 500px;
+}
+
+#startNewTour {
+    display: block;
+    margin: 0 auto;
+    width: 200px;
+}
+
+.selectedDestination {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selectedDestination .destination-text {
+    flex-grow: 1;
+    padding-left: 10px;
+}
+
+.selectedDestination .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.selectedDestination .delete-button:hover {
+    background-color: #c82333;
+}
+
+#selectedDestinationsContainer h2 {
+    margin-bottom: 10px;
+}
+
+#showTourButton {
+    margin-top: 20px;
+}
+
+.map-container {
+    height: 300px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+#location.selectedDestination {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#location.selectedDestination .delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#location.selectedDestination .delete-button:hover {
+    background-color: #c82333;
+}
+

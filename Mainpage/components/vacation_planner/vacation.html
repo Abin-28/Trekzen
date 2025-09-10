@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,93 +25,10 @@
 
     <link href="/Mainpage/css/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        #map {
-            height: 500px;
-        }
-        #startNewTourBtn {
-            display: block;
-            margin: 0 auto;
-            width: 200px; /* Adjust the width as needed */
-        }
-    </style>
+    <link href="/Mainpage/css/style.css" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
 
-    <style>
-        /* CSS styles for selected destinations container and inserted places */
-        .selectedDestination {
-            background-color: #fff;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 15px; /* Adjust the margin-bottom to add gaps */
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Align items to both ends */
-        }
-        
-        .selectedDestination .destination-text {
-            flex-grow: 1;
-            padding-left: 10px; /* Add padding to the left of the destination text */
-        }
-        
-        .selectedDestination .delete-button {
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        
-        .selectedDestination .delete-button:hover {
-            background-color: #c82333;
-        }
-        
-        #selectedDestinationsContainer h2 {
-            margin-bottom: 10px;
-        }
-        
-        #showTourButton {
-            margin-top: 20px;
-        }
-        
-        /* Styles for the map container */
-        .map-container {
-            height: 300px; /* Adjust height as needed */
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        
-        #location.selectedDestination {
-            background-color: #fff;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 15px; /* Adjust the margin-bottom to add gaps */
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Align items to both ends */
-        }
-        
-        #location.selectedDestination .delete-button {
-            background-color: #dc3545;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        
-        #location.selectedDestination .delete-button:hover {
-            background-color: #c82333;
-        }
-        
-
-    </style>
-    
-    
 </head>
 
 <body>
@@ -287,7 +203,7 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <button type="button" class="btn btn-primary" id="startNewTourBtn" style="display: none;">Start New Tour</button>
+                        <button type="button" class="btn btn-primary" id="startNewTour" style="display: none;">Start New Tour</button>
                     </div>
                 </div>
             </main>
@@ -305,6 +221,9 @@
     <!-- Leaflet Routing Machine JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.js"></script>
     <!-- Your existing JavaScript file -->
+    <script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/10.10.0/firebase-firestore.js"></script>
+
     <script src="/Mainpage/js/script.js"></script>
 
     <script src="/Mainpage/js/vacation.js"></script>

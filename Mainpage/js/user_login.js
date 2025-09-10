@@ -56,6 +56,9 @@ const getSelectedDestinations = async () => {
 // Function to render tour data on the profile page
 const renderTourData = (destinations) => {
     const tourList = document.getElementById('tourList');
+    if (!tourList) {
+        return;
+    }
     tourList.innerHTML = ''; // Clear previous tour data
 
     // Group destinations by numbering
@@ -80,10 +83,12 @@ const renderTourData = (destinations) => {
     });
     // Show or hide the "Daycation" container based on data
     const daycationContainer = document.getElementById("Short");
-    if (Object.keys(groupedDestinations).length === 0) {
-        daycationContainer.closest(".card-body").style.display = "none";
-    } else {
-        daycationContainer.closest(".card-body").style.display = "block";
+    if (daycationContainer && daycationContainer.closest) {
+        if (Object.keys(groupedDestinations).length === 0) {
+            daycationContainer.closest(".card-body").style.display = "none";
+        } else {
+            daycationContainer.closest(".card-body").style.display = "block";
+        }
     }
 };
 
@@ -117,6 +122,9 @@ const getDays = async () => {
 const renderDays = (destinations) => {
     console.log('My function is called!');
     const destinationList = document.getElementById('tour');
+    if (!destinationList) {
+        return;
+    }
     destinationList.innerHTML = ''; // Clear previous destination data
 
     // Group destinations by numbering (representing different tours)
@@ -181,10 +189,12 @@ const renderDays = (destinations) => {
 
     // Show or hide the "Long Trip Tour" container based on data
     const longTripContainer = document.getElementById("Long");
-    if (Object.keys(tours).length === 0) {
-        longTripContainer.closest(".card-body").style.display = "none";
-    } else {
-        longTripContainer.closest(".card-body").style.display = "block";
+    if (longTripContainer && longTripContainer.closest) {
+        if (Object.keys(tours).length === 0) {
+            longTripContainer.closest(".card-body").style.display = "none";
+        } else {
+            longTripContainer.closest(".card-body").style.display = "block";
+        }
     }
 };
 
@@ -206,13 +216,20 @@ let CheckCred = async () => {
                 GreetHead.classList.add('animated', 'fadeInUp');
                 PGreetHead.innerText = `${UserInfo.firstname} ${UserInfo.lastname}`;
             }
-            // Call getSelectedDestinations function
-            const destinations = await getSelectedDestinations();
-            renderTourData(destinations); // Render the tour data on the profile page
-            // Call getSelectedDestinations function
-            const destination = await getDays();
-            renderDays(destination); // Render the tour data on the profile page
-            getComments(); // Call getComments after Firestore instance is initialized
+            // Conditionally render profile-related data if containers exist
+            const hasTourList = document.getElementById('tourList');
+            const hasTourDays = document.getElementById('tour');
+            if (hasTourList) {
+                const destinations = await getSelectedDestinations();
+                renderTourData(destinations);
+            }
+            if (hasTourDays) {
+                const destination = await getDays();
+                renderDays(destination);
+            }
+            if (document.getElementById('commentsList')) {
+                getComments();
+            }
         } else {
             // Redirect to the login page if the user is not authenticated
             window.location.href = "Loginpage/user_login.html";
@@ -223,8 +240,10 @@ let CheckCred = async () => {
 };
 
 window.addEventListener('load', CheckCred);
-// SignOutBtn.addEventListener('click', Signout);
-SignOutBtn.addEventListener('click',Signout);
+// SignOut button only when present
+if (SignOutBtn) {
+    SignOutBtn.addEventListener('click',Signout);
+}
 
 const addComment = async (comment) => {
     try {
@@ -251,17 +270,18 @@ const getComments = async () => {
         // Fetch comments even if the user is not authenticated
         const querySnapshot = await getDocs(query(collection(db, "comments"), orderBy("timestamp", "desc")));
         const commentsList = document.getElementById('commentsList');
-        
-        //commentsList.innerHTML = ''; // Clear previous comments
-        querySnapshot.forEach(doc => {
-            const commentData = doc.data();
-            const commentElement = document.createElement('div');
-            commentElement.innerHTML = `
-                <p><strong>${commentData.user}</strong>: ${commentData.text}</p>
-                <hr>
-            `;
-            commentsList.appendChild(commentElement);
-        });
+        if (commentsList) {
+            //commentsList.innerHTML = ''; // Clear previous comments
+            querySnapshot.forEach(doc => {
+                const commentData = doc.data();
+                const commentElement = document.createElement('div');
+                commentElement.innerHTML = `
+                    <p><strong>${commentData.user}</strong>: ${commentData.text}</p>
+                    <hr>
+                `;
+                commentsList.appendChild(commentElement);
+            });
+        }
     } catch (error) {
         console.error('Error getting comments: ', error);
     }
@@ -481,8 +501,10 @@ export { VstartNewTour };
 
 
 
-// Initial call to get comments when the page loads
-getComments();
+// Initial call to get comments when the page loads, only if container exists
+if (document.getElementById('commentsList')) {
+    getComments();
+}
 const fetchBusinesses = async () => {
     try {
         const user = auth.currentUser;
@@ -501,7 +523,8 @@ const fetchBusinesses = async () => {
         const businessTableBody = document.getElementById("businessTableBody");
 
         if (!businessTableBody) {
-            throw new Error('businessTableBody element not found');
+            // Page does not have the business table; skip silently
+            return;
         }
 
         if (querySnapshot.size === 0) {
@@ -544,6 +567,10 @@ const fetchBusinesses = async () => {
 
 // Listen for changes in authentication state
 onAuthStateChanged(auth, (user) => {
+    // Only run business fetch flow on pages that have the container
+    if (!document.getElementById('businessTableBody')) {
+        return;
+    }
     if (user) {
         console.log('User is signed in.');
         fetchBusinesses(); // Fetch businesses when user is signed in
@@ -612,7 +639,8 @@ const fetchPlaces = async () => {
         const placeTableBody = document.getElementById("placeTableBody");
 
         if (!placeTableBody) {
-            throw new Error('placeTableBody element not found');
+            // Page does not have the place table; skip silently
+            return;
         }
 
         if (querySnapshot.size === 0) {
@@ -655,6 +683,10 @@ const fetchPlaces = async () => {
 
 // Listen for changes in authentication state
 onAuthStateChanged(auth, (user) => {
+    // Only run place fetch flow on pages that have the container
+    if (!document.getElementById('placeTableBody')) {
+        return;
+    }
     if (user) {
         console.log('User is signed in.');
         fetchPlaces(); // Fetch place when user is signed in
