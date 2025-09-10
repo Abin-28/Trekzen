@@ -48,41 +48,70 @@ Trekzen is a comprehensive travel planning platform focused on solving real-worl
 ## 📁 Project Structure
 
 ```
-Trekzen (New)/
+Trekzen /
 ├── AdminPage/                    # Administrative interface
-│   ├── adminpage.html           # Main admin dashboard
+│   ├── adminpage.html           # Admin dashboard
 │   ├── adminpage.js             # Admin functionality
-│   ├── adminsignin.html         # Admin login page
-│   └── adminsignup.html         # Admin registration
+│   ├── adminsignin.html         # Admin login page (entry)
+│   ├── adminsignup.html         # Admin registration
+│   └── README.md                # Admin docs
 ├── Homepage/                    # Landing page and public interface
 │   ├── home.html                # Main homepage
 │   ├── css/                     # Stylesheets and animations
 │   ├── js/                      # Frontend JavaScript modules
 │   └── fonts/                   # Custom fonts and icons
 ├── Loginpage/                   # User authentication
-│   ├── user_login.html          # User login interface
+│   ├── user_login.html          # User login
 │   ├── user_signup_page.html    # User registration
-│   └── cascade/                 # Authentication styles
+│   └── cascade/                 # Auth stylesheets
 ├── Mainpage/                    # Core application functionality
-│   ├── user_home.html           # User dashboard
-│   ├── profile.html             # User profile management
-│   ├── cities.csv               # Location database (2133+ entries)
-│   ├── Kerala.geojson           # Geographic boundary data
 │   ├── components/              # Feature modules
+│   │   ├── user_home.html       # User home/dashboard
+│   │   ├── profile/             # Profile pages
+│   │   │   └── profile.html
 │   │   ├── quick_planner/       # Single-day trip planning
+│   │   │   ├── quickplan.html
+│   │   │   ├── selected_destinations.json
+│   │   │   ├── distance.json
+│   │   │   ├── matrix.json
+│   │   │   ├── ordered_places.json
+│   │   │   └── result.json
 │   │   ├── vacation_planner/    # Multi-day trip planning
-│   │   ├── add_bussiness/       # Business management
-│   │   └── add_place/           # Location management
-│   ├── js/                      # Application logic
-│   └── css/                     # Application styles
+│   │   │   ├── vacationplan.html
+│   │   │   ├── days.json
+│   │   │   ├── distance_days.json
+│   │   │   ├── days_matrix.json
+│   │   │   ├── ordered.json
+│   │   │   └── vacresult.json
+│   │   ├── add_destination/     # Add Destinations Contribution flows
+│   │   │   ├── add_bussiness/
+│   │   │   │   ├── addbussiness.html
+│   │   │   │   └── bussiness.html
+│   │   │   └── add_place/
+│   │   │       ├── addplace.html
+│   │   │       └── place.html
+│   │   ├── preset/              # Preset itineraries (e.g., Kodaikanal, Vagamon)
+│   │   │   ├── preset1.html     # Preset route 1
+│   │   │   ├── preset2.html     # Preset route 2
+│   │   │   └── preset3.html     # Preset route 3
+│   ├── js/                      # App logic (modules)
+│   │   ├── quick_planner/
+│   │   ├── vacation_planner/
+│   │   ├── preset/
+│   │   ├── profile/
+│   │   └── main.js
+│   ├── css/                     # App styles
+│   ├── cities.csv               # Location database (2k+ entries)
+│   └── Kerala.geojson           # Geographic boundary data
 ├── images/                      # Static assets
 │   ├── avatars/                 # User profile images
 │   ├── icons/                   # Application icons
 │   ├── login_page/              # Authentication UI assets
 │   ├── main_page/               # Main application images
 │   └── map/                     # Mapping interface assets
-├── server.js                    # Main server application
+├── server.js                    # Main server application - Express server (serves static + APIs)
 ├── package.json                 # Project dependencies
+├── package-lock.json            # Lockfile
 └── README.md                    # Project documentation
 ```
 
@@ -184,6 +213,15 @@ Deployment (Render)
 3) Notes
    - The server serves static files and API under the same origin; client scripts call APIs with relative paths.
    - For local dev, run `npm start` and open `http://localhost:3000`.
+
+## Admin Interface
+- Purpose: moderation and approval of user-contributed content.
+  - In the main app (`/Mainpage`), normal users can propose new Places and Businesses via `Mainpage/components/add_destination/` (both `add_place` and `add_bussiness`). These submissions enter a pending/approval state.
+  - The Admin app (`/AdminPage`) lists all pending submissions so admins can review and approve/reject them. This prevents fake or low‑quality entries while leveraging community contributions for coverage of new places and businesses.
+- Open the admin UI at:
+  - Local: `http://localhost:3000/AdminPage`
+  - Render: `<your-render-url>/AdminPage`
+- For detailed admin docs, see `AdminPage/README.md`.
 
 ## 🚀 Getting Started
 

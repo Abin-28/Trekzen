@@ -29,6 +29,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(rootDir, '/Homepage/home.html'));
 });
 
+// Serve admin app at /AdminPage (and /Adminpage)
+app.get(['/AdminPage'], (req, res) => {
+    res.sendFile(path.join(rootDir, '/AdminPage/adminsignin.html'));
+});
+
 // Function to read CSV file and return an array of places with coordinates
 function readCsvFile(callback) {
     const places = [];
