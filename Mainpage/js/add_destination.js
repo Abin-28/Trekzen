@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             // We are on listing page – navigate to add form
             addBusinessBtn.addEventListener('click', function () {
-                window.location.href = '/Mainpage/components/add_bussiness/bussiness1.html';
+                window.location.href = '/Mainpage/components/add_destination/add_bussiness/addbussiness.html';
             });
         }
     }
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             // We are on listing page – navigate to add form
             addPlaceBtn.addEventListener('click', function () {
-                window.location.href = '/Mainpage/components/add_place/addplace.html';
+                window.location.href = '/Mainpage/components/add_destination/add_place/addplace.html';
             });
         }
     }
