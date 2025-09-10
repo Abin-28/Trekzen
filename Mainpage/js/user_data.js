@@ -26,7 +26,7 @@ let Signout =()=>{
 signOut(auth).then(()=>{
 sessionStorage.removeItem("user-creds");
 sessionStorage.removeItem("user-info");
-window.location.href = "Loginpage/user_login.html";
+window.location.href = "/Loginpage/user_login.html";
 })
 }
 
